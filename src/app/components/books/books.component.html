@@ -1,1 +1,20 @@
-<h2>{{book.title}}</h2>
+<h2>My books</h2>
+<ul class="books">
+    <li *ngFor="let book of books">
+        <button [class.selected]="book === selectedBook" type="button" (click)="onSelect(book)">
+            <span class="badge">{{book.id}}</span>
+            <span class="title">{{book.title}}</span>
+        </button>
+    </li>
+</ul>
+
+<div *ngIf="selectedBook">
+    <h2>{{selectedBook.title}} details</h2>
+    <div><span>id: </span>{{selectedBook.id}}</div>
+
+    <label for="author">Book author: </label>
+    <input id="author" [(ngModel)]="selectedBook.author"  placeholder="author">
+    <label for="title">Book title: </label>
+    <input id="title" [(ngModel)]="selectedBook.title" placeholder="title">
+</div>
+
